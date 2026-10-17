@@ -1,0 +1,33 @@
+# Publica la web en GitHub Pages (rama gh-pages) cada vez que se sube algo a main.
+name: Publicar web
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: web
+  cancel-in-progress: true
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Con dominio propio (variable DOMINIO, p. ej. plazzo.app) la web va en la raíz; si no, en /<nombre del repo>.
+      - name: Generar la web
+        run: |
+          if [ -n "${{ vars.DOMINIO }}" ]; then export BASE_URL="" DOMINIO="${{ vars.DOMINIO }}"; else export BASE_URL="/${{ github.event.repository.name }}"; fi
+          scripts/web.sh
+      - name: Subir a la rama gh-pages
+        run: |
+          cd dist
+          git init -q -b gh-pages
+          git add -A
+          git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" commit -qm "Web ${GITHUB_SHA::7}"
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" gh-pages

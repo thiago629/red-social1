@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "Plazzo",
+    "slug": "plazzo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.plazzo"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#7C3AED",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "app.plazzo"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single",
+      "bundler": "metro",
+      "lang": "es",
+      "themeColor": "#6D3BF0",
+      "description": "Plazzo: la red social para contarlo y enseñarlo todo."
+    },
+    "plugins": [
+      "expo-router",
+      "expo-web-browser",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Para que puedas elegir fotos y vídeos de tu galería y publicarlos en tus posts, reels e historias.",
+          "cameraPermission": false,
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": false,
+          "supportsPictureInPicture": false
+        }
+      ]
+    ],
+    "scheme": "plazzo",
+    "primaryColor": "#6D3BF0"
+  }
+}

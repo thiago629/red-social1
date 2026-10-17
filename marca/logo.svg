@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#FF8A3D"/>
+      <stop offset="0.35" stop-color="#FF3D71"/>
+      <stop offset="0.7" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#1D9BF0"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="124" fill="url(#g)"/>
+  <!-- Una "P" que es a la vez bocadillo de conversación (charlar) y objetivo de cámara (fotos y vídeos) -->
+  <path d="M168 404 V214 a110 110 0 1 1 110 110 h-44" fill="none" stroke="#fff" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="278" cy="214" r="36" fill="#fff"/>
+</svg>
